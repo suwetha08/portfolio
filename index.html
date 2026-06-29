@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suwetha B — Full-Stack Developer & DevOps Engineer</title>
+    <meta name="description" content="Portfolio of Suwetha B — MERN Stack Developer, DevOps enthusiast, and B.Tech IT student at Sri Eshwar College of Engineering.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #ffffff; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #262626; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #404040; }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger children */
+        .reveal-stagger .reveal-child {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-stagger.active .reveal-child {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-stagger.active .reveal-child:nth-child(1) { transition-delay: 0.05s; }
+        .reveal-stagger.active .reveal-child:nth-child(2) { transition-delay: 0.1s; }
+        .reveal-stagger.active .reveal-child:nth-child(3) { transition-delay: 0.15s; }
+        .reveal-stagger.active .reveal-child:nth-child(4) { transition-delay: 0.2s; }
+        .reveal-stagger.active .reveal-child:nth-child(5) { transition-delay: 0.25s; }
+        .reveal-stagger.active .reveal-child:nth-child(6) { transition-delay: 0.3s; }
+        .reveal-stagger.active .reveal-child:nth-child(7) { transition-delay: 0.35s; }
+        .reveal-stagger.active .reveal-child:nth-child(8) { transition-delay: 0.4s; }
+
+        /* Hero photo ring */
+        .photo-ring {
+            background: conic-gradient(from 0deg, #f59e0b, #f97316, #ef4444, #ec4899, #8b5cf6, #3b82f6, #f59e0b);
+            padding: 3px;
+            border-radius: 9999px;
+        }
+
+        /* Skill bar animation */
+        .skill-bar-fill {
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .skill-bar-fill.active {
+            width: var(--bar-width);
+        }
+
+        /* Stat counter */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Card hover glow */
+        .card-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245,158,11,0.03) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        .card-glow:hover::before {
+            opacity: 1;
+        }
+
+        /* Nav active indicator */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #f59e0b;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Toast notification */
+        .toast {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Typing cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+            color: #f59e0b;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Floating animation for hero decorations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+        .float-anim-delay {
+            animation: float 8s ease-in-out 2s infinite;
+        }
+
+        /* Timeline line */
+        .timeline-line {
+            background: linear-gradient(to bottom, #f59e0b, #262626);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(10,10,10,0.8); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center group-hover:bg-amber-500/20 transition-colors">
+                        <span class="text-amber-500 font-semibold text-sm">S</span>
+                    </div>
+                    <span class="text-white font-medium text-sm tracking-tight hidden sm:block">SB</span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#about" class="nav-link text-sm font-medium text-neutral-400 hover:text-white transition-colors">About</a>
+                    <a href="#education" class="nav-link text-sm font-medium text-neutral-400 hover:text-white transition-colors">Education</a>
+                    <a href="#experience" class="nav-link text-sm font-medium text-neutral-400 hover:text-white transition-colors">Experience</a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-neutral-400 hover:text-white transition-colors">Projects</a>
+                    <a href="#skills" class="nav-link text-sm font-medium text-neutral-400 hover:text-white transition-colors">Skills</a>
+                    <a href="#achievements" class="nav-link text-sm font-medium text-neutral-400 hover:text-white transition-colors">Achievements</a>
+                    <a href="#contact" class="nav-link text-sm font-medium text-neutral-400 hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <!-- CTA + Hamburger -->
+                <div class="flex items-center gap-3">
+                    <a href="resume.pdf" download class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-neutral-900 text-sm font-medium rounded-full transition-colors">
+                        <span>Resume</span>
+                        <span class="iconify" data-icon="lucide:download" data-width="14"></span>
+                    </a>
+                    <button id="menuBtn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 hover:border-white/20 transition-colors">
+                        <span class="iconify" data-icon="lucide:menu" data-width="20" id="menuIcon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-neutral-950/98" style="backdrop-filter: blur(24px);">
+        <div class="flex items-center justify-between px-6 h-16">
+            <span class="text-white font-medium">Menu</span>
+            <button id="closeMenuBtn" class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10">
+                <span class="iconify" data-icon="lucide:x" data-width="20"></span>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-6 pt-20">
+            <a href="#about" class="mobile-nav-link text-2xl font-light text-neutral-300 hover:text-amber-500 transition-colors">About</a>
+            <a href="#education" class="mobile-nav-link text-2xl font-light text-neutral-300 hover:text-amber-500 transition-colors">Education</a>
+            <a href="#experience" class="mobile-nav-link text-2xl font-light text-neutral-300 hover:text-amber-500 transition-colors">Experience</a>
+            <a href="#projects" class="mobile-nav-link text-2xl font-light text-neutral-300 hover:text-amber-500 transition-colors">Projects</a>
+            <a href="#skills" class="mobile-nav-link text-2xl font-light text-neutral-300 hover:text-amber-500 transition-colors">Skills</a>
+            <a href="#achievements" class="mobile-nav-link text-2xl font-light text-neutral-300 hover:text-amber-500 transition-colors">Achievements</a>
+            <a href="#contact" class="mobile-nav-link text-2xl font-light text-neutral-300 hover:text-amber-500 transition-colors">Contact</a>
+            <a href="#" class="mt-4 inline-flex items-center gap-2 px-8 py-3 bg-amber-500 text-neutral-900 font-medium rounded-full">
+                <span>Download Resume</span>
+                <span class="iconify" data-icon="lucide:download" data-width="16"></span>
+            </a>
+        </div>
+    </div>
+
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://picsum.photos/seed/devportfolio2025/1920/1080.jpg" alt="" class="w-full h-full object-cover opacity-30" style="filter: grayscale(100%) contrast(120%);">
+            <div class="absolute inset-0" style="background: linear-gradient(to top, #0a0a0a, rgba(10,10,10,0.7), rgba(10,10,10,0.5));"></div>
+            <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,10,10,0.8), transparent, rgba(10,10,10,0.8));"></div>
+        </div>
+
+        <!-- Floating decorations -->
+        <div class="absolute top-32 left-10 w-20 h-20 border border-amber-500/10 rounded-2xl float-anim hidden lg:block"></div>
+        <div class="absolute bottom-40 right-16 w-16 h-16 border border-white/5 rounded-full float-anim-delay hidden lg:block"></div>
+        <div class="absolute top-1/2 left-1/4 w-2 h-2 bg-amber-500/30 rounded-full float-anim hidden lg:block"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <!-- Photo -->
+            <div class="reveal mb-8 flex justify-center">
+                <div class="photo-ring">
+                    <div class="w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden bg-neutral-900">
+                        <img src="photo.jpeg" alt="Suwetha B" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status badge -->
+            <div class="reveal mb-6" style="transition-delay: 100ms;">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium uppercase tracking-widest border" style="background: rgba(245,158,11,0.05); border-color: rgba(245,158,11,0.2); color: #fbbf24;">
+                    <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                    Open to Opportunities
+                </span>
+            </div>
+
+            <!-- Name -->
+            <h1 class="reveal font-serif text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[1.05] mb-6" style="transition-delay: 200ms;">
+                Suwetha <span class="text-amber-500">B</span>
+            </h1>
+
+            <!-- Tagline -->
+            <p class="reveal text-lg md:text-xl font-light text-neutral-400 max-w-2xl mx-auto mb-4 leading-relaxed" style="transition-delay: 300ms;">
+                Full-Stack Developer & DevOps Engineer
+            </p>
+            <p class="reveal text-sm font-light text-neutral-500 max-w-xl mx-auto mb-10" style="transition-delay: 350ms;">
+                Building scalable web applications with the MERN stack and automating deployments with modern DevOps tools. B.Tech IT @ Sri Eshwar College of Engineering.
+            </p>
+
+            <!-- CTAs -->
+            <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay: 400ms;">
+                <a href="#projects" class="inline-flex items-center gap-2 px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-neutral-900 text-sm font-medium rounded-full transition-colors">
+                    <span>View My Work</span>
+                    <span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span>
+                </a>
+                <a href="#contact" class="inline-flex items-center gap-2 px-8 py-3.5 border border-white/10 hover:border-white/20 text-white text-sm font-medium rounded-full transition-colors">
+                    <span>Get in Touch</span>
+                </a>
+            </div>
+
+            <!-- Quick stats -->
+            <div class="reveal mt-16 flex flex-wrap items-center justify-center gap-8 md:gap-12" style="transition-delay: 500ms;">
+                <div class="text-center">
+                    <div class="stat-number text-2xl md:text-3xl font-semibold text-white" data-target="1200">0</div>
+                    <div class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Problems Solved</div>
+                </div>
+                <div class="w-px h-10 bg-white/10 hidden md:block"></div>
+                <div class="text-center">
+                    <div class="stat-number text-2xl md:text-3xl font-semibold text-white" data-target="3">0</div>
+                    <div class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Projects Built</div>
+                </div>
+                <div class="w-px h-10 bg-white/10 hidden md:block"></div>
+                <div class="text-center">
+                    <div class="stat-number text-2xl md:text-3xl font-semibold text-white" data-target="2">0</div>
+                    <div class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Internships</div>
+                </div>
+                <div class="w-px h-10 bg-white/10 hidden md:block"></div>
+                <div class="text-center">
+                    <div class="stat-number text-2xl md:text-3xl font-semibold text-white" data-target="5">0</div>
+                    <div class="text-xs text-neutral-500 uppercase tracking-widest mt-1">Certifications</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+            <span class="text-[10px] text-neutral-600 uppercase tracking-widest">Scroll</span>
+            <span class="iconify text-neutral-600" data-icon="lucide:chevron-down" data-width="16"></span>
+        </div>
+    </section>
+
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="py-24 lg:py-32" style="background: linear-gradient(to bottom, #0a0a0a, #171717);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left: Image -->
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="aspect-[4/5] rounded-2xl overflow-hidden w-5/6 mx-auto">
+                            <img src="photo.jpeg" alt="About Suwetha" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700">
+                        </div>
+                        <!-- Floating card -->
+                        <div class="absolute -bottom-6 -right-6 bg-neutral-900/90 border border-white/10 rounded-2xl p-5 backdrop-blur-sm hidden md:block" style="right: 5%;">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center">
+                                    <span class="iconify text-amber-500" data-icon="lucide:code-2" data-width="20"></span>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-white">8.2 CGPA</div>
+                                    <div class="text-xs text-neutral-500">B.Tech IT (till 3rd sem)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div>
+                    <div class="reveal">
+                        <span class="text-xs font-medium uppercase tracking-widest text-amber-500 mb-4 block">About Me</span>
+                        <h2 class="font-serif text-3xl md:text-5xl tracking-tight mb-6">
+                            Passionate about building<br>
+                            <span class="text-amber-500">meaningful software</span>
+                        </h2>
+                    </div>
+                    <div class="reveal space-y-4 text-sm font-light text-neutral-400 leading-relaxed" style="transition-delay: 100ms;">
+                        <p>
+                            I'm Suwetha B, a second-year B.Tech Information Technology student at Sri Eshwar College of Engineering, Coimbatore. My journey in tech began with competitive programming — solving over 1,200 problems across LeetCode, SkillRack, and CodeChef — and has evolved into full-stack development and DevOps.
+                        </p>
+                        <p>
+                            Through my internships at IGenuine Technologies and vSphere Technologies, I've gained hands-on experience building MERN stack applications, implementing CI/CD pipelines with GitLab, and managing containerized deployments with Docker and Kubernetes.
+                        </p>
+                        <p>
+                            I'm driven by the intersection of clean code, scalable architecture, and seamless user experiences. When I'm not coding, you'll find me participating in hackathons or coordinating technical events.
+                        </p>
+                    </div>
+                    <div class="reveal mt-8 flex flex-wrap gap-3" style="transition-delay: 200ms;">
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-full border border-white/10 text-neutral-300 bg-white/5">MERN Stack</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-full border border-white/10 text-neutral-300 bg-white/5">DevOps & SRE</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-full border border-white/10 text-neutral-300 bg-white/5">Cloud Computing</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-full border border-white/10 text-neutral-300 bg-white/5">DSA & Problem Solving</span>
+                        <span class="px-3 py-1.5 text-xs font-medium rounded-full border border-white/10 text-neutral-300 bg-white/5">Competitive Programming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== EDUCATION ==================== -->
+    <section id="education" class="py-24 lg:py-32 bg-neutral-950">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="reveal text-xs font-medium uppercase tracking-widest text-amber-500 mb-4 block">Education</span>
+                <h2 class="reveal font-serif text-3xl md:text-5xl tracking-tight" style="transition-delay: 100ms;">Academic <span class="text-amber-500">Background</span></h2>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <!-- Timeline -->
+                <div class="relative">
+                    <!-- Vertical line -->
+                    <div class="absolute left-6 md:left-8 top-0 bottom-0 w-px timeline-line"></div>
+
+                    <!-- B.Tech -->
+                    <div class="reveal-stagger">
+                        <div class="reveal-child relative flex gap-6 md:gap-8 pb-12">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-amber-500" data-icon="lucide:graduation-cap" data-width="24"></span>
+                            </div>
+                            <div class="pt-1 md:pt-3">
+                                <div class="flex flex-wrap items-center gap-3 mb-1">
+                                    <h3 class="text-lg font-medium text-white">B.Tech in Information Technology</h3>
+                                    <span class="px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest bg-amber-500/10 text-amber-500 rounded-full">Current</span>
+                                </div>
+                                <p class="text-sm text-neutral-400 mb-1">Sri Eshwar College of Engineering, Coimbatore</p>
+                                <p class="text-xs text-neutral-500 mb-3">2024 – 2028 (Expected)</p>
+                                <div class="flex items-center gap-4">
+                                    <div>
+                                        <div class="text-2xl font-semibold text-white">8.2<span class="text-sm text-neutral-500 font-normal"> CGPA</span></div>
+                                        <div class="text-xs text-neutral-500">Up to 3rd Semester</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- HSC -->
+                        <div class="reveal-child relative flex gap-6 md:gap-8 pb-12">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-neutral-400" data-icon="lucide:book-open" data-width="24"></span>
+                            </div>
+                            <div class="pt-1 md:pt-3">
+                                <h3 class="text-lg font-medium text-white mb-1">Higher Secondary Certificate (HSC)</h3>
+                                <p class="text-sm text-neutral-400 mb-1">AVB Matriculation Higher Secondary School</p>
+                                <p class="text-xs text-neutral-500 mb-3">2023 – 2024</p>
+                                <div class="text-2xl font-semibold text-white">89.0<span class="text-sm text-neutral-500 font-normal"> %</span></div>
+                            </div>
+                        </div>
+
+                        <!-- SSLC -->
+                        <div class="reveal-child relative flex gap-6 md:gap-8">
+                            <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                                <span class="iconify text-neutral-400" data-icon="lucide:school" data-width="24"></span>
+                            </div>
+                            <div class="pt-1 md:pt-3">
+                                <h3 class="text-lg font-medium text-white mb-1">Secondary School Leaving Certificate (SSLC)</h3>
+                                <p class="text-sm text-neutral-400 mb-1">AVB Matriculation Higher Secondary School</p>
+                                <p class="text-xs text-neutral-500 mb-3">2021 – 2022</p>
+                                <div class="text-2xl font-semibold text-white">91.0<span class="text-sm text-neutral-500 font-normal"> %</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== EXPERIENCE ==================== -->
+    <section id="experience" class="py-24 lg:py-32" style="background: linear-gradient(to bottom, #171717, #0a0a0a);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="reveal text-xs font-medium uppercase tracking-widest text-amber-500 mb-4 block">Experience</span>
+                <h2 class="reveal font-serif text-3xl md:text-5xl tracking-tight" style="transition-delay: 100ms;">Professional <span class="text-amber-500">Journey</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- DevOps Intern -->
+                <div class="reveal card-glow rounded-2xl border border-white/10 p-8 hover:border-amber-500/30 transition-colors duration-300" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                            <span class="iconify text-blue-400" data-icon="lucide:cloud" data-width="24"></span>
+                        </div>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">2026</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-white mb-1">DevOps & SRE Intern</h3>
+                    <p class="text-sm text-amber-500/80 mb-4">vSphere Technologies</p>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3 text-sm font-light text-neutral-400 leading-relaxed">
+                            <span class="iconify text-amber-500/60 mt-1 flex-shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                            Managed virtual machines using VMware and accessed remote systems via MobaXterm
+                        </li>
+                        <li class="flex gap-3 text-sm font-light text-neutral-400 leading-relaxed">
+                            <span class="iconify text-amber-500/60 mt-1 flex-shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                            Worked with Docker and Kubernetes for containerized application deployment
+                        </li>
+                        <li class="flex gap-3 text-sm font-light text-neutral-400 leading-relaxed">
+                            <span class="iconify text-amber-500/60 mt-1 flex-shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                            Utilized GitLab CI/CD pipeline to automate build and deployment workflows
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-neutral-500 bg-white/5 rounded">VMware</span>
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-neutral-500 bg-white/5 rounded">Docker</span>
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-neutral-500 bg-white/5 rounded">Kubernetes</span>
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-neutral-500 bg-white/5 rounded">GitLab CI/CD</span>
+                    </div>
+                </div>
+
+                <!-- MERN Intern -->
+                <div class="reveal card-glow rounded-2xl border border-white/10 p-8 hover:border-amber-500/30 transition-colors duration-300" style="transition-delay: 100ms; background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+                            <span class="iconify text-green-400" data-icon="lucide:code-2" data-width="24"></span>
+                        </div>
+                        <span class="px-3 py-1 text-xs font-medium rounded-full bg-green-500/10 text-green-400 border border-green-500/20">2025</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-white mb-1">MERN Stack Developer Intern</h3>
+                    <p class="text-sm text-amber-500/80 mb-4">IGenuine Technologies</p>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3 text-sm font-light text-neutral-400 leading-relaxed">
+                            <span class="iconify text-amber-500/60 mt-1 flex-shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                            Developed full-stack web applications using MongoDB, Express.js, React.js, and Node.js
+                        </li>
+                        <li class="flex gap-3 text-sm font-light text-neutral-400 leading-relaxed">
+                            <span class="iconify text-amber-500/60 mt-1 flex-shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                            Built REST APIs and integrated frontend with backend services
+                        </li>
+                        <li class="flex gap-3 text-sm font-light text-neutral-400 leading-relaxed">
+                            <span class="iconify text-amber-500/60 mt-1 flex-shrink-0" data-icon="lucide:check-circle-2" data-width="14"></span>
+                            Worked with Git for version control and collaborative development
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-neutral-500 bg-white/5 rounded">React.js</span>
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-neutral-500 bg-white/5 rounded">Node.js</span>
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-neutral-500 bg-white/5 rounded">MongoDB</span>
+                        <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-neutral-500 bg-white/5 rounded">REST APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects" class="py-24 lg:py-32 bg-neutral-950">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="reveal text-xs font-medium uppercase tracking-widest text-amber-500 mb-4 block">Projects</span>
+                <h2 class="reveal font-serif text-3xl md:text-5xl tracking-tight" style="transition-delay: 100ms;">Featured <span class="text-amber-500">Case Studies</span></h2>
+                <p class="reveal text-sm text-neutral-500 mt-4 max-w-xl mx-auto" style="transition-delay: 200ms;">Each project represents a real problem solved with clean architecture and thoughtful design decisions.</p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Project 1: CollabConnect -->
+                <div class="reveal card-glow rounded-3xl border border-white/10 overflow-hidden hover:border-amber-500/30 transition-colors duration-500" style="background: linear-gradient(to bottom, rgba(38,38,38,0.3), rgba(23,23,23,0.3));">
+                    <div class="grid lg:grid-cols-2">
+                        <div class="aspect-[4/3] lg:aspect-auto relative overflow-hidden">
+                            <img src="collabconnect.png" alt="CollabConnect Platform" class="w-full h-full object-cover opacity-70 hover:opacity-90 hover:scale-105 transition-all duration-700">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1.5 text-[10px] font-medium uppercase tracking-widest bg-amber-500 text-neutral-900 rounded-full">Featured</span>
+                            </div>
+                        </div>
+                        <div class="p-8 lg:p-12 flex flex-col justify-center">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-amber-400 bg-amber-500/10 rounded">ReactJS</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-amber-400 bg-amber-500/10 rounded">Node.js</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-amber-400 bg-amber-500/10 rounded">Express.js</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-amber-400 bg-amber-500/10 rounded">MongoDB</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-amber-400 bg-amber-500/10 rounded">REST APIs</span>
+                            </div>
+                            <h3 class="text-2xl font-medium text-white mb-3">CollabConnect</h3>
+                            <p class="text-xs text-amber-500/70 uppercase tracking-widest mb-4">Project Collaboration Platform</p>
+                            <p class="text-sm font-light text-neutral-400 leading-relaxed mb-6">
+                                A MERN-stack platform for discovering, posting, and joining collaborative projects. Implemented project management, team formation, and skill-based search features — enabling developers to find the right teammates and build together.
+                            </p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-amber-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    Project discovery & posting system
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-amber-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    Team formation & skill-based matching
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-amber-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    Full project management workflow
+                                </div>
+                            </div>
+                            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-amber-500 hover:text-amber-400 transition-colors group">
+                                <span>View on GitHub</span>
+                                <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: TestGen AI -->
+                <div class="reveal card-glow rounded-3xl border border-white/10 overflow-hidden hover:border-amber-500/30 transition-colors duration-500" style="transition-delay: 100ms; background: linear-gradient(to bottom, rgba(38,38,38,0.3), rgba(23,23,23,0.3));">
+                    <div class="grid lg:grid-cols-2">
+                        <div class="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-purple-400 bg-purple-500/10 rounded">Python</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-purple-400 bg-purple-500/10 rounded">JavaScript</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-purple-400 bg-purple-500/10 rounded">ReactJS</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-purple-400 bg-purple-500/10 rounded">OpenAI API</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-purple-400 bg-purple-500/10 rounded">LLMs</span>
+                            </div>
+                            <h3 class="text-2xl font-medium text-white mb-3">TestGen AI</h3>
+                            <p class="text-xs text-purple-400/70 uppercase tracking-widest mb-4">AI-Powered Test Case Generator</p>
+                            <p class="text-sm font-light text-neutral-400 leading-relaxed mb-6">
+                                An automated system that leverages OpenAI's LLM APIs to generate comprehensive test cases from user inputs and API specifications. Improved test coverage and enabled basic bug detection for more efficient software testing workflows.
+                            </p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-purple-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    LLM-powered test case generation
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-purple-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    API spec to test case automation
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-purple-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    Basic bug detection capabilities
+                                </div>
+                            </div>
+                            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors group">
+                                <span>View on GitHub</span>
+                                <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                            </a>
+                        </div>
+                        <div class="aspect-[4/3] lg:aspect-auto relative overflow-hidden order-1 lg:order-2">
+                            <img src="testgen.jpg" alt="TestGen AI" class="w-full h-full object-cover opacity-70 hover:opacity-90 hover:scale-105 transition-all duration-700">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Task Manager -->
+                <div class="reveal card-glow rounded-3xl border border-white/10 overflow-hidden hover:border-amber-500/30 transition-colors duration-500" style="transition-delay: 200ms; background: linear-gradient(to bottom, rgba(38,38,38,0.3), rgba(23,23,23,0.3));">
+                    <div class="grid lg:grid-cols-2">
+                        <div class="aspect-[4/3] lg:aspect-auto relative overflow-hidden">
+                            <img src="taskmanager.png" alt="Task Manager" class="w-full h-full object-cover opacity-70 hover:opacity-90 hover:scale-105 transition-all duration-700">
+                        </div>
+                        <div class="p-8 lg:p-12 flex flex-col justify-center">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-cyan-400 bg-cyan-500/10 rounded">ReactJS</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-cyan-400 bg-cyan-500/10 rounded">Node.js</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-cyan-400 bg-cyan-500/10 rounded">MongoDB Atlas</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-cyan-400 bg-cyan-500/10 rounded">JWT</span>
+                                <span class="px-2 py-1 text-[10px] uppercase tracking-wider text-cyan-400 bg-cyan-500/10 rounded">REST APIs</span>
+                            </div>
+                            <h3 class="text-2xl font-medium text-white mb-3">Task Manager</h3>
+                            <p class="text-xs text-cyan-400/70 uppercase tracking-widest mb-4">Full-Stack Task Management System</p>
+                            <p class="text-sm font-light text-neutral-400 leading-relaxed mb-6">
+                                A scalable full-stack task management system featuring task assignment and real-time status tracking. Engineered secure JWT-based authentication, optimized RESTful APIs, and deployed on MongoDB Atlas using a structured Git-based workflow.
+                            </p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-cyan-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    JWT-based secure authentication
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-cyan-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    Real-time task status tracking
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-neutral-300">
+                                    <span class="iconify text-cyan-500/60" data-icon="lucide:check" data-width="14"></span>
+                                    Deployed on MongoDB Atlas
+                                </div>
+                            </div>
+                            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group">
+                                <span>View on GitHub</span>
+                                <span class="iconify group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="14"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== SKILLS ==================== -->
+    <section id="skills" class="py-24 lg:py-32" style="background: linear-gradient(to bottom, #0a0a0a, #171717);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="reveal text-xs font-medium uppercase tracking-widest text-amber-500 mb-4 block">Technical Skills</span>
+                <h2 class="reveal font-serif text-3xl md:text-5xl tracking-tight" style="transition-delay: 100ms;">My <span class="text-amber-500">Tech Stack</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+                <!-- Languages -->
+                <div class="reveal-child card-glow rounded-2xl border border-white/10 p-6 hover:border-amber-500/30 transition-colors duration-300" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+                        <span class="iconify text-amber-500" data-icon="lucide:file-code-2" data-width="20"></span>
+                    </div>
+                    <h3 class="text-base font-medium text-white mb-4">Languages</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">Java</span><span class="text-neutral-500">Advanced</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-amber-500/70 rounded-full" style="--bar-width: 85%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">C / C++</span><span class="text-neutral-500">Advanced</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-amber-500/70 rounded-full" style="--bar-width: 80%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">JavaScript</span><span class="text-neutral-500">Intermediate</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-amber-500/70 rounded-full" style="--bar-width: 75%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">Python</span><span class="text-neutral-500">Basics</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-amber-500/70 rounded-full" style="--bar-width: 40%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Technologies -->
+                <div class="reveal-child card-glow rounded-2xl border border-white/10 p-6 hover:border-amber-500/30 transition-colors duration-300" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+                        <span class="iconify text-blue-400" data-icon="lucide:layout" data-width="20"></span>
+                    </div>
+                    <h3 class="text-base font-medium text-white mb-4">Web Technologies</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">React.js</span><span class="text-neutral-500">Intermediate</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-500/70 rounded-full" style="--bar-width: 75%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">HTML / CSS</span><span class="text-neutral-500">Advanced</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-500/70 rounded-full" style="--bar-width: 90%"></div></div>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-white/5">
+                        <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">Spring Boot</span><span class="text-neutral-500">Learning</span></div>
+                        <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-blue-500/70 rounded-full" style="--bar-width: 30%"></div></div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="reveal-child card-glow rounded-2xl border border-white/10 p-6 hover:border-amber-500/30 transition-colors duration-300" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center mb-4">
+                        <span class="iconify text-green-400" data-icon="lucide:server" data-width="20"></span>
+                    </div>
+                    <h3 class="text-base font-medium text-white mb-4">Backend & APIs</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">Node.js</span><span class="text-neutral-500">Intermediate</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-green-500/70 rounded-full" style="--bar-width: 75%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">Express.js</span><span class="text-neutral-500">Intermediate</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-green-500/70 rounded-full" style="--bar-width: 75%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">REST APIs</span><span class="text-neutral-500">Intermediate</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-green-500/70 rounded-full" style="--bar-width: 70%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="reveal-child card-glow rounded-2xl border border-white/10 p-6 hover:border-amber-500/30 transition-colors duration-300" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
+                        <span class="iconify text-purple-400" data-icon="lucide:database" data-width="20"></span>
+                    </div>
+                    <h3 class="text-base font-medium text-white mb-4">Databases</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">MongoDB</span><span class="text-neutral-500">Intermediate</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-purple-500/70 rounded-full" style="--bar-width: 75%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">SQL / PostgreSQL</span><span class="text-neutral-500">Intermediate</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-purple-500/70 rounded-full" style="--bar-width: 65%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps & Cloud -->
+                <div class="reveal-child card-glow rounded-2xl border border-white/10 p-6 hover:border-amber-500/30 transition-colors duration-300" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
+                        <span class="iconify text-cyan-400" data-icon="lucide:container" data-width="20"></span>
+                    </div>
+                    <h3 class="text-base font-medium text-white mb-4">DevOps & Cloud</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">Docker</span><span class="text-neutral-500">Intermediate</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-cyan-500/70 rounded-full" style="--bar-width: 70%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">Kubernetes</span><span class="text-neutral-500">Beginner</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-cyan-500/70 rounded-full" style="--bar-width: 45%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1"><span class="text-neutral-300">AWS</span><span class="text-neutral-500">Beginner</span></div>
+                            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden"><div class="skill-bar-fill h-full bg-cyan-500/70 rounded-full" style="--bar-width: 35%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Concepts -->
+                <div class="reveal-child card-glow rounded-2xl border border-white/10 p-6 hover:border-amber-500/30 transition-colors duration-300" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center mb-4">
+                        <span class="iconify text-rose-400" data-icon="lucide:wrench" data-width="20"></span>
+                    </div>
+                    <h3 class="text-base font-medium text-white mb-4">Tools & Concepts</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">Git</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">GitHub</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">GitLab CI/CD</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">DSA</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">OOP</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">DBMS</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">Networking</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">Cloud Computing</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">VMware</span>
+                        <span class="px-3 py-1.5 text-xs text-neutral-300 bg-white/5 rounded-lg border border-white/5">MobaXterm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== ACHIEVEMENTS ==================== -->
+    <section id="achievements" class="py-24 lg:py-32 bg-neutral-950">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="reveal text-xs font-medium uppercase tracking-widest text-amber-500 mb-4 block">Achievements</span>
+                <h2 class="reveal font-serif text-3xl md:text-5xl tracking-tight" style="transition-delay: 100ms;">Beyond the <span class="text-amber-500">Classroom</span></h2>
+            </div>
+
+            <!-- Coding Stats -->
+            <div class="reveal-stagger grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+                <div class="reveal-child text-center p-6 rounded-2xl border border-white/10" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="text-3xl md:text-4xl font-semibold text-amber-500 mb-1 stat-number" data-target="190">0</div>
+                    <div class="text-xs text-neutral-400 mb-1">LeetCode Problems</div>
+                    <div class="text-[10px] text-neutral-600">1 Badge Earned</div>
+                </div>
+                <div class="reveal-child text-center p-6 rounded-2xl border border-white/10" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="text-3xl md:text-4xl font-semibold text-green-400 mb-1 stat-number" data-target="900">0</div>
+                    <div class="text-xs text-neutral-400 mb-1">SkillRack Problems</div>
+                    <div class="text-[10px] text-neutral-600">10+ Certs • Rank #28,582</div>
+                </div>
+                <div class="reveal-child text-center p-6 rounded-2xl border border-white/10" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="text-3xl md:text-4xl font-semibold text-blue-400 mb-1 stat-number" data-target="110">0</div>
+                    <div class="text-xs text-neutral-400 mb-1">CodeChef Problems</div>
+                    <div class="text-[10px] text-neutral-600">1 Badge Earned</div>
+                </div>
+                <div class="reveal-child text-center p-6 rounded-2xl border border-white/10" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="text-3xl md:text-4xl font-semibold text-purple-400 mb-1 stat-number" data-target="60">0</div>
+                    <div class="text-xs text-neutral-400 mb-1">Hackathon Hours</div>
+                    <div class="text-[10px] text-neutral-600">Agentica 2.0 – IIIT Sri City</div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Hackathons & Events -->
+                <div class="reveal card-glow rounded-2xl border border-white/10 p-8" style="background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4">
+                        <span class="iconify text-amber-500" data-icon="lucide:trophy" data-width="20"></span>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-4">Hackathons & Events</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <div class="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <div class="text-sm text-white font-medium">Finalist – Selfie Hackathon (2025)</div>
+                                <div class="text-xs text-neutral-500">Sri Eshwar College of Engineering</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <div class="text-sm text-white font-medium">Participant – Agentica 2.0 (2026)</div>
+                                <div class="text-xs text-neutral-500">60-hour Hackathon, IIIT Sri City, Andhra Pradesh</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="w-2 h-2 rounded-full bg-green-400 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <div class="text-sm text-white font-medium">Student Coordinator – Thiran Cultural Fest (2025)</div>
+                                <div class="text-xs text-neutral-500">Managed event operations & coordinated participants</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Certifications -->
+                <div class="reveal card-glow rounded-2xl border border-white/10 p-8" style="transition-delay: 100ms; background: linear-gradient(to bottom, rgba(38,38,38,0.5), rgba(23,23,23,0.5));">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
+                        <span class="iconify text-purple-400" data-icon="lucide:award" data-width="20"></span>
+                    </div>
+                    <h3 class="text-lg font-medium text-white mb-4">Certifications</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <div class="text-sm text-white font-medium">LinguaSkill Business (B2)</div>
+                                <div class="text-xs text-neutral-500">Cambridge University • 2026</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <div class="text-sm text-white font-medium">Mastering DSA Using C and C++</div>
+                                <div class="text-xs text-neutral-500">Udemy • 2026</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <div class="text-sm text-white font-medium">The Complete Java Programmer</div>
+                                <div class="text-xs text-neutral-500">Udemy • 2025</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <div class="text-sm text-white font-medium">DBMS – Top Interview Questions</div>
+                                <div class="text-xs text-neutral-500">CodeChef • 2025</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="w-2 h-2 rounded-full bg-purple-400 mt-2 flex-shrink-0"></div>
+                            <div>
+                                <div class="text-sm text-white font-medium">C, C++ – Spoken Tutorial Training</div>
+                                <div class="text-xs text-neutral-500">IIT Bombay • 2024</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="py-24 lg:py-32" style="background: linear-gradient(to bottom, #171717, #0a0a0a);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="reveal text-xs font-medium uppercase tracking-widest text-amber-500 mb-4 block">Contact</span>
+                <h2 class="reveal font-serif text-3xl md:text-5xl tracking-tight" style="transition-delay: 100ms;">Let's <span class="text-amber-500">Connect</span></h2>
+                <p class="reveal text-sm text-neutral-500 mt-4 max-w-xl mx-auto" style="transition-delay: 200ms;">I'm always open to discussing new opportunities, interesting projects, or just having a conversation about tech.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-12 max-w-5xl mx-auto">
+                <!-- Contact Info -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="reveal">
+                        <a href="tel:6369345801" class="flex items-center gap-4 p-4 rounded-xl border border-white/10 hover:border-amber-500/30 transition-colors group" style="background: rgba(255,255,255,0.02);">
+                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
+                                <span class="iconify text-amber-500" data-icon="lucide:phone" data-width="18"></span>
+                            </div>
+                            <div>
+                                <div class="text-xs text-neutral-500 mb-0.5">Phone</div>
+                                <div class="text-sm text-neutral-300">+91 6369345801</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="reveal" style="transition-delay: 50ms;">
+                        <a href="mailto:suwetha.b2024it@sece.ac.in" class="flex items-center gap-4 p-4 rounded-xl border border-white/10 hover:border-amber-500/30 transition-colors group" style="background: rgba(255,255,255,0.02);">
+                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500/20 transition-colors">
+                                <span class="iconify text-amber-500" data-icon="lucide:mail" data-width="18"></span>
+                            </div>
+                            <div>
+                                <div class="text-xs text-neutral-500 mb-0.5">Email</div>
+                                <div class="text-sm text-neutral-300 break-all">suwetha.b2024it@sece.ac.in</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="reveal pt-4" style="transition-delay: 100ms;">
+                        <div class="text-xs text-neutral-500 uppercase tracking-widest mb-3">Profiles</div>
+                        <div class="flex gap-3">
+                            <a href="https://www.linkedin.com/in/suwetha-b-173808346/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-neutral-400 hover:text-amber-500 hover:border-amber-500/30 transition-colors" aria-label="LinkedIn">
+                                <span class="iconify" data-icon="lucide:linkedin" data-width="18"></span>
+                            </a>
+                            <a href="https://github.com/suwetha08" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-neutral-400 hover:text-amber-500 hover:border-amber-500/30 transition-colors" aria-label="GitHub">
+                                <span class="iconify" data-icon="lucide:github" data-width="18"></span>
+                            </a>
+                            <a href="https://leetcode.com/u/suwetha08/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border border-white/10 flex items-center justify-center text-neutral-400 hover:text-amber-500 hover:border-amber-500/30 transition-colors" aria-label="LeetCode">
+                                <span class="iconify" data-icon="lucide:code" data-width="18"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Resume Download -->
+                    <div class="reveal" style="transition-delay: 150ms;">
+                        <a href="resume.pdf" download class="flex items-center gap-3 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 hover:bg-amber-500/20 transition-colors group">
+                            <span class="iconify text-amber-500" data-icon="lucide:file-down" data-width="20"></span>
+                            <div>
+                                <div class="text-sm font-medium text-amber-400">Download Resume</div>
+                                <div class="text-xs text-amber-500/60">PDF • Updated 2025</div>
+                            </div>
+                            <span class="iconify ml-auto text-amber-500/60 group-hover:translate-x-1 transition-transform" data-icon="lucide:arrow-right" data-width="16"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-3 reveal" style="transition-delay: 100ms;">
+                    <form id="contactForm" class="space-y-5">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="text-xs text-neutral-500 uppercase tracking-widest mb-2 block">Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Your name"
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-amber-500/50 transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="text-xs text-neutral-500 uppercase tracking-widest mb-2 block">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="you@email.com"
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-amber-500/50 transition-colors">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="text-xs text-neutral-500 uppercase tracking-widest mb-2 block">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="What's this about?"
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-amber-500/50 transition-colors">
+                        </div>
+                        <div>
+                            <label for="message" class="text-xs text-neutral-500 uppercase tracking-widest mb-2 block">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Your message..."
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-amber-500/50 transition-colors resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-amber-500 hover:bg-amber-400 text-neutral-900 text-sm font-medium rounded-full transition-colors">
+                            <span>Send Message</span>
+                            <span class="iconify" data-icon="lucide:send" data-width="14"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-md bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+                        <span class="text-amber-500 font-semibold text-[10px]">S</span>
+                    </div>
+                    <span class="text-sm text-neutral-500">© 2025 Suwetha B. All rights reserved.</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.linkedin.com/in/suwetha-b-173808346/" target="_blank" rel="noopener noreferrer" class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">LinkedIn</a>
+                    <a href="https://github.com/suwetha08" target="_blank" rel="noopener noreferrer" class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">GitHub</a>
+                    <a href="https://leetcode.com/u/suwetha08/" target="_blank" rel="noopener noreferrer" class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">LeetCode</a>
+                    <a href="#" class="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">CodeChef</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div id="toast" class="toast fixed bottom-8 right-8 z-[70] px-6 py-4 rounded-xl border border-green-500/20 bg-neutral-900/95 backdrop-blur-sm shadow-2xl">
+        <div class="flex items-center gap-3">
+            <span class="iconify text-green-400" data-icon="lucide:check-circle-2" data-width="20"></span>
+            <span class="text-sm text-white" id="toastMessage">Message sent successfully!</span>
+        </div>
+    </div>
+
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // ===== Mobile Menu =====
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+
+        // ===== Scroll Reveal =====
+        const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== Skill Bar Animation =====
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillBars.forEach(bar => skillObserver.observe(bar));
+
+        // ===== Stat Counter Animation =====
+        const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    animateCounter(entry.target, target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(el => counterObserver.observe(el));
+
+        function animateCounter(element, target) {
+            const duration = 2000;
+            const start = performance.now();
+            const startVal = 0;
+
+            function update(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                const current = Math.round(startVal + (target - startVal) * eased);
+                element.textContent = current.toLocaleString() + (target >= 100 ? '+' : '');
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        // ===== Active Nav Link on Scroll =====
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Navbar background on scroll
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.borderBottomColor = 'rgba(255,255,255,0.08)';
+            } else {
+                navbar.style.borderBottomColor = 'rgba(255,255,255,0.05)';
+            }
+        });
+
+        // ===== Contact Form =====
+        const contactForm = document.getElementById('contactForm');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success toast
+            toastMessage.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+            toast.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide toast after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        });
+
+        // ===== Smooth scroll for all anchor links =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
